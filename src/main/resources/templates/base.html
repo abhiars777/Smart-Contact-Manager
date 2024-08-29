@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-th-fragment="parent(content, title)" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title data-th-replace="${title}">Base Bage</title>
+
     <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
 </head>
+
 <body>
-    <div>
-        This is base
-    </div>
+    
+    <!-- Main Content-->
+     <section data-th-replace="${content}" ></section>
+
+
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 </body>
+
 </html>

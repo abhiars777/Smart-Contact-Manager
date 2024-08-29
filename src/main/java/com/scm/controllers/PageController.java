@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
+
 @Controller("/")
 public class PageController {
 
@@ -22,15 +23,16 @@ public class PageController {
         return "about";
     }
 
-    @RequestMapping("/services")
-    public String servicesPage() {
-        return "services";
-    }
-
     @RequestMapping("/contact")
     public String contactPage() {
         return "contact";
     }
+
+    @RequestMapping("/service")
+    public String servicePage() {
+        return "service";
+    }
+    
     
     
 
