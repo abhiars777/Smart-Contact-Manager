@@ -17,6 +17,9 @@ import com.scm.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -25,6 +28,12 @@ public class PageController {
 
     @Autowired
     private UserService userService;
+
+    @RequestMapping("/")
+    public String index() {
+        return "redirect:/home";
+    }
+    
 
     @RequestMapping("/home")
     public String home( Model model ) {
@@ -50,7 +59,7 @@ public class PageController {
 
     @GetMapping("/login")
     public String loginPage() {
-        return new String("login");
+        return "login";
     }
 
     @GetMapping("/register")
