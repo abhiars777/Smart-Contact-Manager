@@ -23,6 +23,9 @@
                         Manage Your Contacts on Cloud...
                     </p>
 
+                    <div class="text-red-500 my-3 text-center text-xl font-semibold" data-th-if="${param.error}">Invalid Email or Password!</div>
+                    <div class="text-green-500 my-3 text-center text-xl font-semibold" data-th-if="${param.logout}">You have been logged out!</div>
+
                     <!-- Form : Login form -->
                     <form
                         method="post" 
