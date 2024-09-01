@@ -30,9 +30,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User saveUser(User user) {
         String userId = UUID.randomUUID().toString();
+
         user.setUserId(userId);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoleList(List.of(AppConstants.ROLE_USER));
+        
         logger.info(user.getProvider().toString()); 
         return userRepo.save(user);
     }

@@ -42,8 +42,10 @@ public class User implements UserDetails{ //connecting User with UserDetails, to
     private String name;
     @Column( nullable = false, unique = true)
     private String email;
+
     @Getter(value = AccessLevel.NONE)
     private String password;
+
     @Column( length = 1000)
     private String about;
     private String profilePic;
@@ -61,8 +63,12 @@ public class User implements UserDetails{ //connecting User with UserDetails, to
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY ,orphanRemoval = true)
     private List<Contact> contacts = new ArrayList<>();
 
+
+
+
     @ElementCollection( fetch = FetchType.EAGER)
     private List<String> roleList = new ArrayList<>();
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -76,6 +82,21 @@ public class User implements UserDetails{ //connecting User with UserDetails, to
     }
 
     @Override
+    public boolean isAccountNonExpired(){
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked(){
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired(){
+        return true;
+    }
+
+    @Override
     public boolean isEnabled() {
         return this.enabled;
     }
@@ -85,10 +106,4 @@ public class User implements UserDetails{ //connecting User with UserDetails, to
         return this.password;
     }
 
-    
-
-    
-
-
-    
 }

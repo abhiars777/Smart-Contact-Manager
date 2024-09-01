@@ -17,8 +17,6 @@ import com.scm.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -29,11 +27,10 @@ public class PageController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public String index() {
         return "redirect:/home";
     }
-    
 
     @RequestMapping("/home")
     public String home( Model model ) {
@@ -59,7 +56,7 @@ public class PageController {
 
     @GetMapping("/login")
     public String loginPage() {
-        return "login";
+        return new String("login");
     }
 
     @GetMapping("/register")
@@ -74,7 +71,6 @@ public class PageController {
         return "register";
     }
     
-
     @PostMapping("/do-register")
     public String registrationprocess(@Valid @ModelAttribute UserForm userForm, BindingResult rBindingResult, HttpSession session) {
         //Fetching Data
@@ -102,8 +98,7 @@ public class PageController {
         user.setProfilePic("");
 
         User savedUser = userService.saveUser(user);
-
-        System.out.println("User saved........");
+        System.out.println(savedUser);
 
         Message message = Message.builder().content("Registration Successful!").type(MessageType.green).build();
         session.setAttribute("message", message);
